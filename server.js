@@ -5,7 +5,9 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
+
+var articles = {
+    'article-one': {
     title: 'Article One | Ankit Agarwal',
     heading: 'Article One',
     date: '13 Feb, 2018',
@@ -18,7 +20,28 @@ var articleOne = {
             <p>
                 This is the content I want to display.This is the content I want to display.This is the content I want to display.This is the content I want to display.
             </p>`
+},
+'article-two': {
+    title: 'Article  Two| Ankit Agarwal',
+    heading: 'Article Two',
+    date: '13 Mar, 2018',
+    content: `<p>
+                This is the content I want to display.This is the content I want to display.This is the content I want to display.This is the content I want to display.This is the content I want to display.
+            </p>
+            `
+},
+'article-three': {
+    title: 'Article  Three | Ankit Agarwal',
+    heading: 'Article Three',
+    date: '13 May, 2018',
+    content: `<p>
+                This is the content I want to display.This is the content I want to display.This is the content I want to display.This is the content I want to display.This is the content I want to display.
+            </p>
+            `
+}
 };
+
+
 
 function createTemplate(data) {
     title = data.title;
@@ -60,8 +83,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-   res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+    var articleName = req.params.articleName;
+   res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two', function (req, res) {
