@@ -17,7 +17,7 @@ button.onclick = function() {
         }
         
     };
-    request.open('GET','http://http://okaieitsme.imad.hasura-app.io/counter', true);
+    request.open('GET','http://okaieitsme.imad.hasura-app.io/counter', true);
     request.send(null);
 };
 
