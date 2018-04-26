@@ -50,8 +50,6 @@ var articles = {
 }
 };
 
-
-
 function createTemplate(data) {
     title = data.title;
     heading = data.heading;
